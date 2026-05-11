@@ -126,18 +126,21 @@ export default function HeroBanner() {
           </div>
         </div>
 
-        <h2 className="mt-5 text-center text-2xl font-medium text-slate-900">
-          Featured Categories
-        </h2>
+        <div className="my-7 text-center">
+          <h2 className="text-[30px] font-bold tracking-tight text-slate-900">
+            Featured Categories
+          </h2>
+          <div className="mx-auto mt-3 h-[3px] w-14 rounded-full bg-orange-500" />
+        </div>
 
         <div
-          className="relative mt-8 overflow-hidden"
+          className="relative overflow-hidden pb-8"
           onMouseEnter={() => setPauseCategory(true)}
           onMouseLeave={() => setPauseCategory(false)}
         >
           <button
             onClick={prevCategories}
-            className="absolute left-0 top-[54px] z-20 flex h-9 w-9 items-center justify-center rounded-full bg-orange-500 text-2xl text-white transition hover:scale-105 hover:bg-orange-600"
+            className="absolute left-0 top-[54px] z-20 flex h-10 w-10 items-center justify-center rounded-full bg-orange-500 text-2xl text-white transition hover:scale-105 hover:bg-orange-600"
           >
             ‹
           </button>
@@ -173,7 +176,7 @@ export default function HeroBanner() {
 
           <button
             onClick={nextCategories}
-            className="absolute right-0 top-[54px] z-20 flex h-9 w-9 items-center justify-center rounded-full bg-orange-500 text-2xl text-white transition hover:scale-105 hover:bg-orange-600"
+            className="absolute right-0 top-[54px] z-20 flex h-10 w-10 items-center justify-center rounded-full bg-orange-500 text-2xl text-white transition hover:scale-105 hover:bg-orange-600"
           >
             ›
           </button>

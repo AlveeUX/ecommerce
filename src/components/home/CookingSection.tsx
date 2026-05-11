@@ -3,65 +3,57 @@
 import { useEffect, useRef, useState } from "react"
 import { ShoppingCart, ArrowRight } from "lucide-react"
 
-const honeyProducts = [
+const cookingProducts = [
   {
     id: "1",
-    name: "Sundarban Honey 1kg",
-    price: 2200,
-    oldPrice: 2500,
-    discount: "Save 12%",
-    image: "/products/honey/002.jpg",
+    name: "Gura Masala Combo (Mini Pack)",
+    price: 950,
+    oldPrice: 995,
+    discount: "Save 4%",
+    image: "/products/cooking/cooking (6).jpg",
   },
   {
     id: "2",
-    name: "African Organic Wild Honey 500g",
-    price: 1100,
-    oldPrice: 1250,
-    discount: "Save 12%",
-    image: "/products/honey/006.jpg",
+    name: "Rice Flour (Chaler Gura) 2kg",
+    price: 200,
+    oldPrice: null,
+    discount: null,
+    image: "/products/cooking/cooking.jpg",
   },
   {
     id: "3",
-    name: "Black Seed Honey 500g",
-    price: 720,
-    oldPrice: 800,
-    discount: "Save 10%",
-    image: "/products/honey/008.jpg",
+    name: "Gawa Ghee 500gm",
+    price: 850,
+    oldPrice: 900,
+    discount: "Save 8%",
+    image: "/products/cooking/cooking (4).jpg",
   },
   {
     id: "4",
-    name: "Natural Honeycomb - 1kg",
-    price: 2250,
-    oldPrice: 2500,
-    discount: "Save 10%",
-    image: "/products/honey/001.jpg",
+    name: "Laal Atta 2kg",
+    price: 200,
+    oldPrice: null,
+    discount: null,
+    image: "/products/cooking/cooking (1).jpg",
   },
   {
     id: "5",
-    name: "Lychee Flower Honey 500g",
-    price: 500,
-    oldPrice: 600,
-    discount: "Save 17%",
-    image: "/products/honey/012.jpg",
-  },
-  {
-    id: "6",
-    name: "Raw Honey 500g",
-    price: 900,
-    oldPrice: 1000,
-    discount: "Save 10%",
-    image: "/products/honey/005.jpg",
+    name: "Deshi Mustard Oil 2 liter",
+    price: 620,
+    oldPrice: null,
+    discount: null,
+    image: "/products/cooking/cooking (3).jpg",
   },
 ]
 
-export default function HoneySection() {
+export default function CookingSection() {
   const scrollRef = useRef<HTMLDivElement | null>(null)
   const [paused, setPaused] = useState(false)
 
   const duplicatedProducts = [
-    ...honeyProducts,
-    ...honeyProducts,
-    ...honeyProducts,
+    ...cookingProducts,
+    ...cookingProducts,
+    ...cookingProducts,
   ]
 
   const CARD_WIDTH = 292
@@ -109,14 +101,14 @@ export default function HoneySection() {
 
   return (
     <section
-      className="mx-auto max-w-[1400px] px-6 pb-16"
+      className="mx-auto max-w-[1400px] px-6 py-14"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
+      <div className="mb-7 flex items-center justify-between border-b border-slate-200 pb-4">
         <div>
           <h2 className="text-[30px] font-bold tracking-tight text-slate-900">
-            All Natural Honey
+            Cooking Essentials
           </h2>
 
           <div className="mt-3 h-[3px] w-14 rounded-full bg-orange-500" />
@@ -151,17 +143,19 @@ export default function HoneySection() {
             {duplicatedProducts.map((product, index) => (
               <article
                 key={`${product.id}-${index}`}
-                className="relative flex h-[430px] w-[272px] shrink-0 flex-col overflow-hidden rounded-lg border border-slate-200 bg-white p-4 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="group relative flex h-[430px] w-[272px] shrink-0 flex-col overflow-hidden rounded-lg border border-slate-200 bg-white p-4 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
-                <span className="absolute right-4 top-4 z-20 rounded-md bg-emerald-500 px-2.5 py-1 text-xs font-semibold text-white shadow-sm">
-                  {product.discount}
-                </span>
+                {product.discount && (
+                  <span className="absolute right-4 top-4 z-20 rounded-md bg-emerald-500 px-2.5 py-1 text-xs font-semibold text-white shadow-sm">
+                    {product.discount}
+                  </span>
+                )}
 
                 <div className="relative z-10 flex h-[240px] items-center justify-center overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="max-h-[220px] max-w-full object-contain transition duration-500 hover:scale-105"
+                    className="max-h-[220px] max-w-full object-contain transition duration-500 group-hover:scale-105"
                   />
                 </div>
 
@@ -175,9 +169,11 @@ export default function HoneySection() {
                       ৳{product.price.toLocaleString()}
                     </span>
 
-                    <span className="text-lg text-slate-400 line-through">
-                      ৳{product.oldPrice.toLocaleString()}
-                    </span>
+                    {product.oldPrice && (
+                      <span className="text-lg text-slate-400 line-through">
+                        ৳{product.oldPrice.toLocaleString()}
+                      </span>
+                    )}
                   </div>
 
                   <button className="mt-5 flex h-[46px] w-full items-center justify-center gap-2 rounded-md border border-orange-500 text-sm font-semibold text-orange-500 transition duration-300 hover:bg-orange-500 hover:text-white">
